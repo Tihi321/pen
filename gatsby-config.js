@@ -30,10 +30,10 @@ const plugins = [
   {
     resolve: "gatsby-source-filesystem",
     options: {
-      name: "posts",
-      path: `${__dirname}/content/posts/`,
+      name: "tales",
+      path: `${__dirname}/content/tales/`,
     },
-    __key: "posts",
+    __key: "tales",
   },
   {
     resolve: "gatsby-plugin-root-import",

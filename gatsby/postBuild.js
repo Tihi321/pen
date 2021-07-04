@@ -19,8 +19,8 @@ const onPostBuild = async ({ graphql }) => {
       }
     }
   `).then((result) => {
-    const postsPath = "./public/posts";
-    const postPath = "./public/posts/post";
+    const postsPath = "./public/tales";
+    const postPath = "./public/tales/tale";
 
     const posts = result.data.posts.edges.map(({ node }) => node);
 
@@ -32,7 +32,7 @@ const onPostBuild = async ({ graphql }) => {
       fs.mkdirSync(postPath);
     }
 
-    fs.writeFileSync(`${postsPath}/posts.json`, JSON.stringify(posts));
+    fs.writeFileSync(`${postsPath}/index.json`, JSON.stringify(posts));
 
     posts.map((post) => {
       const data = {

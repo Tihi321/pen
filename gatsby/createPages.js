@@ -24,8 +24,8 @@ const createPages = async ({ graphql, actions }) => {
             path
           }
           frontmatter {
-            tags
             title
+            chapter
           }
           id
         }
@@ -33,18 +33,16 @@ const createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  let postTags = [];
   let allPosts = [];
 
   result.data.posts.nodes.forEach(
-    ({ fields: { path }, id, frontmatter: { tags, title } }) => {
-      postTags = [...postTags, ...tags];
+    ({ fields: { path }, id, frontmatter: { title, chapter } }) => {
       allPosts = [
         ...allPosts,
         {
           title,
+          chapter,
           path,
-          tags,
           id,
         },
       ];
@@ -59,10 +57,6 @@ const createPages = async ({ graphql, actions }) => {
       component: join(templatesPath, "Post.tsx"),
       context: {
         id,
-        tags: tags.map((tag) => ({
-          name: tag,
-          path: createTagURI(tag),
-        })),
         previous: previous
           ? {
               title: previous.title,
@@ -83,7 +77,6 @@ const createPages = async ({ graphql, actions }) => {
     name: tag,
     path: createTagURI(tag),
   }));
-
   allTags.forEach(({ name, path }) => {
     const tagPosts = allPosts.filter(({ tags }) => tags.includes(name));
 
@@ -94,8 +87,7 @@ const createPages = async ({ graphql, actions }) => {
       path,
       component: join(templatesPath, "Category.tsx"),
       context: {
-        tag: name,
-        tags: allTags,
+        title: name,
       },
     });
   });

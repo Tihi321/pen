@@ -66,7 +66,7 @@
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"],
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error", {"trailingComma": true}],
     "linebreak-style": 0,
     "prefer-destructuring": [
       "error",
@@ -249,7 +249,7 @@
       "files": ["*.json"],
       "rules": {
           "prettier/prettier": "off",
-          "no-trailing-spaces": "off"   
+          "no-trailing-spaces": "off"
       }
     },
     {

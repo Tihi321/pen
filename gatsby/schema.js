@@ -2,12 +2,11 @@ const createSchemaCustomization = ({ actions, schema }) => {
   const { createTypes } = actions;
   const postTypeDefs = [
     schema.buildObjectType({
-      name: "Md",
+      name: "MarkdownRemark",
       frontmatter: {
         title: "String!",
+        chapter: "String!",
         date: "Date!",
-        tags: "[String!]!",
-        excerpt: "String",
         featured: "Boolean!",
         publish: "Boolean!",
       },
