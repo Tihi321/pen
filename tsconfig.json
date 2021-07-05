@@ -14,7 +14,7 @@
       "~ts/templates": ["src/templates"],
       "~ts/themes": ["src/themes"],
       "~ts/utils": ["src/utils"],
-      "~ts/posts": ["content/posts"],
+      "~ts/novels": ["content/novels"],
       "~ts/images": ["content/images"],
       "~ts/images/*": ["content/images/*"],
       "~ts/assets": ["content/assets"],
