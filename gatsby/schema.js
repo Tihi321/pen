@@ -5,14 +5,17 @@ const createSchemaCustomization = ({ actions, schema }) => {
       name: "MarkdownRemark",
       frontmatter: {
         title: "String!",
-        chapter: "String!",
-        date: "Date!",
-        featured: "Boolean!",
+        tags: "[String!]!",
         publish: "Boolean!",
       },
       fields: {
         path: "String!",
         slug: "String!",
+        novel: `
+        type Novel {
+          title: String!,
+          chapter: Int!,
+        }`,
       },
       interfaces: ["Node"],
     }),

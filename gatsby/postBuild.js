@@ -7,42 +7,48 @@ const onPostBuild = async ({ graphql }) => {
         edges {
           node {
             fields {
-              slug
+              novel {
+                title
+                chapter
+              }
             }
             frontmatter {
               title
-              date
+              tags
             }
             html
+            id
           }
         }
       }
     }
   `).then((result) => {
-    const postsPath = "./public/tales";
-    const postPath = "./public/tales/tale";
+    const restPath = "./public/rest";
+    const restNovelPath = "./public/rest/novel";
 
     const posts = result.data.posts.edges.map(({ node }) => node);
 
-    if (!fs.existsSync(postsPath)) {
-      fs.mkdirSync(postsPath);
+    if (!fs.existsSync(restPath)) {
+      fs.mkdirSync(restPath);
     }
 
-    if (!fs.existsSync(postPath)) {
-      fs.mkdirSync(postPath);
+    if (!fs.existsSync(restNovelPath)) {
+      fs.mkdirSync(restNovelPath);
     }
 
-    fs.writeFileSync(`${postsPath}/index.json`, JSON.stringify(posts));
+    const postsData = posts.map(data => ({id: data.id, title: data.frontmatter.title, tags: data.frontmatter.tags, novel: data.fields.novel.title}));
+
+    fs.writeFileSync(`${restPath}/novels.json`, JSON.stringify(postsData));
 
     posts.map((post) => {
       const data = {
         ...post.frontmatter,
-        slug: post.fields.slug,
+        ...post.fields,
         body: post.html,
       };
 
       fs.writeFileSync(
-        `${postPath}/${post.fields.slug}.json`,
+        `${restNovelPath}/${post.id}.json`,
         JSON.stringify(data)
       );
     });

@@ -1,6 +1,10 @@
 const { resolve, join } = require("path");
 const { POSTS_PER_PAGE } = require("./constants");
-const { createPagedPageCallback, createTagURI } = require("./utils");
+const {
+  createPagedPageCallback,
+  createTagURI,
+  createNovelURI,
+} = require("./utils");
 
 const templatesPath = resolve(__dirname, "../src/templates");
 
@@ -22,10 +26,13 @@ const createPages = async ({ graphql, actions }) => {
         nodes {
           fields {
             path
+            novel {
+              title
+            }
           }
           frontmatter {
             title
-            chapter
+            tags
           }
           id
         }
@@ -36,22 +43,28 @@ const createPages = async ({ graphql, actions }) => {
   let allPosts = [];
 
   result.data.posts.nodes.forEach(
-    ({ fields: { path }, id, frontmatter: { title, chapter } }) => {
+    ({ fields: { path, novel }, id, frontmatter: { title, tags } }) => {
       allPosts = [
         ...allPosts,
         {
           title,
-          chapter,
           path,
+          tags,
           id,
+          novel,
         },
       ];
     }
   );
 
-  allPosts.forEach(({ path, tags, id }, index) => {
+  let postNovels = [];
+  let postTags = [];
+
+  allPosts.forEach(({ path, tags, novel: { title }, id }, index) => {
     const previous = index === allPosts.length - 1 ? null : allPosts[index + 1];
     const next = index === 0 ? null : allPosts[index - 1];
+    postTags = [...postTags, ...tags];
+    postNovels = [...postNovels, title];
     createPage({
       path,
       component: join(templatesPath, "Post.tsx"),
@@ -77,6 +90,12 @@ const createPages = async ({ graphql, actions }) => {
     name: tag,
     path: createTagURI(tag),
   }));
+
+  const novels = Array.from(new Set(postNovels)).map((novel) => ({
+    name: novel,
+    path: createNovelURI(novel),
+  }));
+
   allTags.forEach(({ name, path }) => {
     const tagPosts = allPosts.filter(({ tags }) => tags.includes(name));
 

@@ -1,8 +1,6 @@
 ---
-title: Rabbit Pete
-chapter: Tree
-date: 2021-02-23
-featured: false
+title: Tree
+tags: [children]
 publish: true
 ---
 

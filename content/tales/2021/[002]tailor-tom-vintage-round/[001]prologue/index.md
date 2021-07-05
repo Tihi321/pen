@@ -1,8 +1,6 @@
 ---
-title: Rabbit Pete
-chapter: Prologue
-date: 2021-02-23
-featured: false
+title: Prologue
+tags: [children]
 publish: true
 ---
 

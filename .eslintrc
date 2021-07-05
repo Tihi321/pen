@@ -66,7 +66,8 @@
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"],
-    "prettier/prettier": ["error", {"trailingComma": true}],
+    "prettier/prettier": ["error", {"trailingComma": true}, {"arrowParens": "avoid"}],
+    "arrow-parens": [true, "ban-single-arg-parens"],
     "linebreak-style": 0,
     "prefer-destructuring": [
       "error",
@@ -90,7 +91,6 @@
       "smart-tabs"
     ],
     "radix": "off",
-    "arrow-parens": "off",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": ["error"],
     "no-use-before-define": "off",
@@ -233,7 +233,7 @@
 
     // react-hooks rules
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "off"
+    "react-hooks/exhaustive-deps": "off",
   },
   "overrides": [
     {
