@@ -14,7 +14,6 @@ import styled, { css, useTheme } from "styled-components";
 
 import { Heading, TextSize } from "~ts/components/Common";
 import { BottomLineContainer } from "~ts/components/Containers";
-import { FeaturedTagLink } from "~ts/components/Links";
 import { EBreakpoints, EHeadingSizes, ESide, ETextSizes } from "~ts/enums";
 import { sociaColor, socialBackgroundColor } from "~ts/themes";
 import { IStyledProps, TTagLink } from "~ts/typings";
@@ -51,10 +50,6 @@ const PostLinkFooterStyled = styled.div`
   }
 `;
 
-const TagsFooterStyled = styled.div`
-  display: flex;
-  align-items: center;
-`;
 
 const SocialIcons = styled.div`
   display: flex;
@@ -99,7 +94,6 @@ export const PostHeader = ({
   readingTime,
   className,
   pageUrl,
-  tags = []
 }: IPostHeaderProps) => {
   const { site }: IPageQuery = useStaticQuery(graphql`
     {
@@ -119,17 +113,6 @@ export const PostHeader = ({
     <BottomLineContainer className={className}>
       <HeadingStyled size={EHeadingSizes.Large}>{title}</HeadingStyled>
       <PostLinkFooterStyled>
-        <TagsFooterStyled>
-          {tags &&
-            tags.map((tag, index) => (
-              <FeaturedTagLink
-                key={`${title}-${tag.name}-${index}`}
-                to={tag.path}
-                text={tag.name}
-                active
-              />
-            ))}
-        </TagsFooterStyled>
         <DateTimeStyled size={ETextSizes.Tiny}>
           {readingTime}
         </DateTimeStyled>
