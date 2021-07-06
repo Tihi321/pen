@@ -1,0 +1,27 @@
+{
+  "extends": "./base-tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "~ts/components": ["src/components"],
+      "~ts/components/*": ["src/components/*"],
+      "~ts/typings": ["src/typings"],
+      "~ts/enums": ["src/enums"],
+      "~ts/hooks": ["src/hooks"],
+      "~ts/pages": ["src/pages"],
+      "~ts/store": ["src/store"],
+      "~ts/styles": ["src/styles"],
+      "~ts/templates": ["src/templates"],
+      "~ts/themes": ["src/themes"],
+      "~ts/utils": ["src/utils"],
+      "~ts/novels": ["content/novels"],
+      "~ts/images": ["content/images"],
+      "~ts/images/*": ["content/images/*"],
+      "~ts/assets": ["content/assets"],
+      "~ts/assets/*": ["content/assets/*"],
+      "~ts/gatsby": ["content/gatsby"],
+      "~ts/gatsby/*": ["content/gatsby/*"]
+    },
+    "typeRoots": ["./src/typings/modules", "node_modules/@types"]
+  }
+}
