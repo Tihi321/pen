@@ -32,7 +32,6 @@ interface IPostHeaderProps extends IStyledProps {
   tags: TTagLink[];
   title: string;
   readingTime: string;
-  date: string;
   pageUrl: string;
 }
 
@@ -99,7 +98,6 @@ export const PostHeader = ({
   title,
   readingTime,
   className,
-  date,
   pageUrl,
   tags = []
 }: IPostHeaderProps) => {
@@ -133,7 +131,7 @@ export const PostHeader = ({
             ))}
         </TagsFooterStyled>
         <DateTimeStyled size={ETextSizes.Tiny}>
-          {readingTime} - {date}
+          {readingTime}
         </DateTimeStyled>
         <SocialIcons>
           <FacebookShareButtonStyled

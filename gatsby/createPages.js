@@ -28,6 +28,7 @@ const createPages = async ({ graphql, actions }) => {
             path
             novel {
               title
+              chapter
             }
           }
           frontmatter {
@@ -60,15 +61,18 @@ const createPages = async ({ graphql, actions }) => {
   let postNovels = [];
   let postTags = [];
 
-  allPosts.forEach(({ path, tags, novel: { title }, id }, index) => {
+  allPosts.forEach(({ path, tags, novel: { title, chapter }, id }, index) => {
     const previous = index === allPosts.length - 1 ? null : allPosts[index + 1];
     const next = index === 0 ? null : allPosts[index - 1];
     postTags = [...postTags, ...tags];
-    postNovels = [...postNovels, title];
+    if (chapter === 1) {
+      postNovels = [...postNovels, title];
+    }
     createPage({
       path,
-      component: join(templatesPath, "Post.tsx"),
+      component: join(templatesPath, "Novel.tsx"),
       context: {
+        post: allPosts[index],
         id,
         previous: previous
           ? {
@@ -97,16 +101,34 @@ const createPages = async ({ graphql, actions }) => {
   }));
 
   allTags.forEach(({ name, path }) => {
-    const tagPosts = allPosts.filter(({ tags }) => tags.includes(name));
+    const tagPosts = allPosts.filter(({ tags, novel }) => tags.includes(name) && novel.chapter === 1);
+    const tagNovels = tagPosts.map(({novel}) => novel.title);
 
     createPagedPageCallback({
       callback: createPage,
       postsPerPage: POSTS_PER_PAGE,
       numOfPosts: tagPosts.length,
       path,
-      component: join(templatesPath, "Category.tsx"),
+      component: join(templatesPath, "Novels.tsx"),
       context: {
         title: name,
+        novels: novels.filter(({ name }) => tagNovels.includes(name))
+      },
+    });
+  });
+
+  novels.forEach(({ name, path}) => {
+    const chapters = allPosts.filter(({ novel: {title} }) => title === name);
+
+    createPagedPageCallback({
+      callback: createPage,
+      postsPerPage: POSTS_PER_PAGE,
+      numOfPosts: chapters.length,
+      path,
+      component: join(templatesPath, "Chapters.tsx"),
+      context: {
+        title: name,
+        chapters
       },
     });
   });
@@ -116,9 +138,10 @@ const createPages = async ({ graphql, actions }) => {
     postsPerPage: POSTS_PER_PAGE,
     numOfPosts: allPosts.length,
     path: "/",
-    component: join(templatesPath, "Posts.tsx"),
+    component: join(templatesPath, "Novels.tsx"),
     context: {
       tags: allTags,
+      novels
     },
   });
 };
