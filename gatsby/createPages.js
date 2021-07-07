@@ -11,13 +11,11 @@ const templatesPath = resolve(__dirname, "../src/templates");
 const createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  // Custom 404 Page
   createPage({
     path: "/404",
     component: join(templatesPath, "404.tsx"),
   });
 
-  // Posts Page
   const result = await graphql(`
     query {
       posts: allMarkdownRemark(
@@ -70,7 +68,7 @@ const createPages = async ({ graphql, actions }) => {
     }
     createPage({
       path,
-      component: join(templatesPath, "Novel.tsx"),
+      component: join(templatesPath, "Chapter.tsx"),
       context: {
         post: allPosts[index],
         id,
@@ -125,10 +123,10 @@ const createPages = async ({ graphql, actions }) => {
       postsPerPage: POSTS_PER_PAGE,
       numOfPosts: chapters.length,
       path,
-      component: join(templatesPath, "Chapters.tsx"),
+      component: join(templatesPath, "Novel.tsx"),
       context: {
         title: name,
-        chapters
+        chapters: chapters.map(({title, path}) => ({title, path}))
       },
     });
   });

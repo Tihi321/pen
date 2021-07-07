@@ -5,9 +5,9 @@ import { BottomLineContainer } from "~ts/components/Containers";
 import { HeadingLink } from "~ts/components/Links";
 import {
   EHeadingSizes,
-  EPostLinkSizes,
+  ELinkSizes,
 } from "~ts/enums";
-import { TPostLinkSizes, TTagLink } from "~ts/typings";
+import { TLinkSizes, TTagLink } from "~ts/typings";
 
 interface ILinkProps {
   text: string;
@@ -15,8 +15,8 @@ interface ILinkProps {
   tags?: TTagLink[];
 }
 
-interface IPostLinkProps extends ILinkProps {
-  size: TPostLinkSizes;
+interface INovelLinkProps extends ILinkProps {
+  size: TLinkSizes;
 }
 
 const BottomLineContainerStyled = styled(BottomLineContainer)`
@@ -27,17 +27,17 @@ const HeadingLinkStyled = styled(HeadingLink)`
   padding-bottom: 0;
 `;
 
-export const PostLink = ({
+export const NovelLink = ({
   text,
   to,
-  size = EPostLinkSizes.Regular,
-}: IPostLinkProps) => (
+  size = ELinkSizes.Regular,
+}: INovelLinkProps) => (
   <BottomLineContainerStyled>
     <HeadingLinkStyled
       text={text}
       to={to}
       size={
-        size === EPostLinkSizes.Regular
+        size === ELinkSizes.Regular
           ? EHeadingSizes.Medium
           : EHeadingSizes.Regular
       }

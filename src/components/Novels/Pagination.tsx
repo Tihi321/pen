@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { BottomLineContainer } from "~ts/components/Containers";
 import { ArrowLink, InternalLink } from "~ts/components/Links";
 import { EArrowLinkSides } from "~ts/enums";
-import { IPostsContext, IStyledProps } from "~ts/typings";
+import { IPagination, IStyledProps } from "~ts/typings";
 
 const { createPaginatedURI } = require("~ts/gatsby/utils");
 
@@ -15,8 +15,8 @@ interface IPaginationLink {
   number: number;
 }
 
-interface IPostsPaginationProps extends IStyledProps {
-  context: IPostsContext;
+interface IPaginationProps extends IStyledProps {
+  context: IPagination;
 }
 
 const PaginationFooterStyled = styled(BottomLineContainer)`
@@ -42,10 +42,10 @@ const ArrowLinkStyled = styled(({ ...props }) => <ArrowLink {...props} />)`
   opacity: ${props => (!props.active ? "0.5" : "1")};
 `;
 
-export const PostsPagination = ({
+export const Pagination = ({
   context: { current, paged, src },
   className
-}: IPostsPaginationProps) => {
+}: IPaginationProps) => {
   const paginationLinks: IPaginationLink[] = range(paged).map(pageNumber => ({
     path: pageNumber > 0 ? createPaginatedURI(src, pageNumber) : src,
     number: pageNumber,
