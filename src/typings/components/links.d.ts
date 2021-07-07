@@ -1,3 +1,3 @@
-import { EPostLinkSizes } from "~ts/enums";
+import { ELinkSizes } from "~ts/enums";
 
-export type TPostLinkSizes = EPostLinkSizes.Regular | EPostLinkSizes.Small;
+export type TLinkSizes = ELinkSizes.Regular | ELinkSizes.Small;

@@ -9,7 +9,7 @@ export enum ELinkType {
   External = "external"
 }
 
-export enum EPostLinkSizes {
+export enum ELinkSizes {
   Regular = "regular",
   Small = "small"
 }

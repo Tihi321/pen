@@ -1,4 +1,4 @@
-export interface IPostsPagination {
+export interface IPagination {
   src: string;
   limit: number;
   skip: number;

@@ -1,11 +1,8 @@
-export interface TPath {
+export interface TPostLink {
+  title: string;
   path: string;
 }
-
-export interface TPostLink extends TPath {
-  title: string;
-}
-
-export interface TTagLink extends TPath {
+export interface TTagLink {
   name: string;
+  path: string;
 }

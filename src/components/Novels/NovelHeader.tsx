@@ -27,7 +27,7 @@ interface IPageQuery {
   };
 }
 
-interface IPostHeaderProps extends IStyledProps {
+interface IHeaderProps extends IStyledProps {
   tags: TTagLink[];
   title: string;
   readingTime: string;
@@ -89,12 +89,12 @@ const RedditShareButtonStyled = styled(RedditShareButton)`
   ${socialStyles}
 `;
 
-export const PostHeader = ({
+export const NovelHeader = ({
   title,
   readingTime,
   className,
   pageUrl,
-}: IPostHeaderProps) => {
+}: IHeaderProps) => {
   const { site }: IPageQuery = useStaticQuery(graphql`
     {
       site {
