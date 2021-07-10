@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import { ColumnsContainer } from "~ts/components/Containers";
 import { Layout } from "~ts/components/Layout";
 import { NovelLink } from "~ts/components/Novels/NovelLink";
 import { Pagination } from "~ts/components/Novels/Pagination";
@@ -25,6 +24,7 @@ const PaginationStyled = styled(Pagination)`
 
 interface IContextProps extends IPagination {
   tag?: string;
+  tags: TTagLink[];
   novels: TTagLink[];
 }
 
@@ -33,21 +33,25 @@ interface INovelsPageProps {
 }
 
 export const NovelsPage = ({ pageContext }: INovelsPageProps) => {
+  console.log("pageContext", pageContext);
   return (
-    <Layout title={pageContext?.tag || "Blog"}>
-      <ColumnsContainer>
-        <ContainerStyled>
-          {pageContext.novels.map(novel => (
-            <NovelLink
-              key={novel.name}
-              to={novel.path}
-              text={novel.name}
-              size={ELinkSizes.Small}
-            />
-          ))}
-          <PaginationStyled context={pageContext} />
-        </ContainerStyled>
-      </ColumnsContainer>
+    <Layout title={pageContext?.tag || "Pen"}>
+      {!pageContext.tag && "Welcome to Pen, general writting blog"}
+      <select name="cars" id="cars" onChange={event => { console.log(event.currentTarget.value)}}>
+        <option value="all">All</option>
+        {pageContext.tags.map(tag => <option value={tag.name}>{tag.name}</option>)}
+      </select>
+      <ContainerStyled>
+        {pageContext.novels.map(novel => (
+          <NovelLink
+            key={novel.name}
+            to={novel.path}
+            text={novel.name}
+            size={ELinkSizes.Small}
+          />
+        ))}
+        <PaginationStyled context={pageContext} />
+      </ContainerStyled>
     </Layout>
   );
 };

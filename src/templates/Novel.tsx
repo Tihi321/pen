@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import { ColumnsContainer } from "~ts/components/Containers";
 import { Layout } from "~ts/components/Layout";
 import { NovelLink } from "~ts/components/Novels/NovelLink";
 import { Pagination } from "~ts/components/Novels/Pagination";
@@ -35,19 +34,17 @@ interface INovelPageProps {
 export const NovelPage = ({ pageContext }: INovelPageProps) => {
   return (
     <Layout title={pageContext.title}>
-      <ColumnsContainer>
-        <ContainerStyled>
-          {pageContext.chapters.map(chapter => (
-            <NovelLink
-              key={chapter.title}
-              to={chapter.path}
-              text={chapter.title}
-              size={ELinkSizes.Small}
-            />
-          ))}
-          <PaginationStyled context={pageContext} />
-        </ContainerStyled>
-      </ColumnsContainer>
+      <ContainerStyled>
+        {pageContext.chapters.map(chapter => (
+          <NovelLink
+            key={chapter.title}
+            to={chapter.path}
+            text={chapter.title}
+            size={ELinkSizes.Small}
+          />
+        ))}
+        <PaginationStyled context={pageContext} />
+      </ContainerStyled>
     </Layout>
   );
 };

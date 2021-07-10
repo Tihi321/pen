@@ -1,13 +1,13 @@
 const META_DATA = {
-  TITLE: "Portfolio 2021",
-  DESCRIPTION: "Programming portfolio website",
-  INTRO: "Hi, I'm Tihomir. I build products with TypeScript, React, and Node.",
-  SITE_URL: "https://www.tihomir-selak.from.hr"
+  TITLE: "Pen",
+  DESCRIPTION: "Writing blog",
+  INTRO: "Hi, I'm Tihomir. Main Tppfeller on this page",
+  SITE_URL: "https://pen.tihomir-selak.from.hr"
 };
 
 const AUTHOR_DATA = {
   NAME: "Tihomir Selak",
-  SUMMARY: "React, Typescript and Node Developer"
+  SUMMARY: "General writting Journal blog"
 };
 
 module.exports = {
