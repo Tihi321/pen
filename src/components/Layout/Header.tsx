@@ -34,10 +34,6 @@ const HeaderLinksGroupStyled = styled.div`
   align-items: center;
 `;
 
-const BlogLinkStyled = styled(InternalLink)`
-  margin-right: 20px;
-`;
-
 const ThemeButtonStyled = styled(FeaturedButton)`
   text-transform: capitalize;
 `;
@@ -53,14 +49,14 @@ export const Header = () => {
         <LogoStyled />
       </InternalLink>
       {isTablet && (
+        <>
+        <div>{"Pen"}</div>
         <HeaderLinksGroupStyled>
-          <BlogLinkStyled size={ETextSizes.Medium} to={EInternalLinks.BLOG}>
-            Blog
-          </BlogLinkStyled>
           <ThemeButtonStyled onClick={() => switchTheme()}>
             {theme}
           </ThemeButtonStyled>
         </HeaderLinksGroupStyled>
+        </>
       )}
     </HeaderStyled>
   );

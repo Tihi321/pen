@@ -1,7 +1,7 @@
 export enum EInternalLinks {
   HOME = "/",
-  BLOG = "/posts",
-  WORKS = "/works"
+  BLOG = "https://www.tihomir-selak.from.hr",
+  PEN = "https://pen.tihomir-selak.from.hr",
 }
 
 export enum ELinkType {

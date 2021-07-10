@@ -110,6 +110,7 @@ const createPages = async ({ graphql, actions }) => {
       component: join(templatesPath, "Novels.tsx"),
       context: {
         tag: name,
+        tags: allTags,
         novels: novels.filter(({ name }) => tagNovels.includes(name))
       },
     });
@@ -138,6 +139,7 @@ const createPages = async ({ graphql, actions }) => {
     path: "/",
     component: join(templatesPath, "Novels.tsx"),
     context: {
+      tags: allTags,
       novels
     },
   });

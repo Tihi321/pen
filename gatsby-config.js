@@ -51,7 +51,7 @@ const plugins = [
   {
     resolve: "gatsby-plugin-google-fonts",
     options: {
-      fonts: ["lato:400,400i,700"],
+      fonts: ["Playfair+Display:400,700", "Raleway:400,400i,700"],
       display: "swap",
     },
   },

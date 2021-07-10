@@ -101,9 +101,8 @@ export const Footer = () => {
     <FooterStyled>
       <FooterLinksGroupStyled>
         <FooterLinkStyled to={CONTACT.MAIL}>Mail</FooterLinkStyled>
-        <FooterLinkStyled to={CONTACT.GITHUB}>Github</FooterLinkStyled>
-        <FooterLinkStyled to={CONTACT.LINKEDIN}>Linkedin</FooterLinkStyled>
-        {isMobile && <InternalLink to={EInternalLinks.BLOG}>Blog</InternalLink>}
+        <FooterLinkStyled to={EInternalLinks.PEN}>Pen</FooterLinkStyled>
+        <FooterLinkStyled to={EInternalLinks.BLOG}>Blog</FooterLinkStyled>
       </FooterLinksGroupStyled>
       <FooterAuthorStyled>
         © {new Date().getFullYear()} {site.siteMetadata.author.name}
