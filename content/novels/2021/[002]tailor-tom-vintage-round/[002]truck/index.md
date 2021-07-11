@@ -1,6 +1,6 @@
 ---
 title: Tree
-tags: [children]
+tags: [adult]
 publish: true
 ---
 
