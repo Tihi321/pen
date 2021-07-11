@@ -29,27 +29,27 @@ const PaginationFooterStyled = styled(BottomLineContainer)`
 const InternalLinkStyled = styled(({ children, ...props }) => (
   <InternalLink {...props}>{children}</InternalLink>
 ))`
-  pointer-events: ${props => (props.active ? "none" : "initial")};
-  cursor: ${props => (props.active ? "default" : "pointer")};
-  opacity: ${props => (props.active ? "0.5" : "1")};
+  pointer-events: ${(props) => (props.active ? "none" : "initial")};
+  cursor: ${(props) => (props.active ? "default" : "pointer")};
+  opacity: ${(props) => (props.active ? "0.5" : "1")};
   padding: 0 5px;
   margin: 0 2px;
 `;
 
 const ArrowLinkStyled = styled(({ ...props }) => <ArrowLink {...props} />)`
-  pointer-events: ${props => (!props.active ? "none" : "initial")};
-  cursor: ${props => (!props.active ? "default" : "pointer")};
-  opacity: ${props => (!props.active ? "0.5" : "1")};
+  pointer-events: ${(props) => (!props.active ? "none" : "initial")};
+  cursor: ${(props) => (!props.active ? "default" : "pointer")};
+  opacity: ${(props) => (!props.active ? "0.5" : "1")};
 `;
 
 export const Pagination = ({
   context: { current, paged, src },
-  className
+  className,
 }: IPaginationProps) => {
-  const paginationLinks: IPaginationLink[] = range(paged).map(pageNumber => ({
+  const paginationLinks: IPaginationLink[] = range(paged).map((pageNumber) => ({
     path: pageNumber > 0 ? createPaginatedURI(src, pageNumber) : src,
     number: pageNumber,
-    active: pageNumber === current - 1
+    active: pageNumber === current - 1,
   }));
 
   return (
@@ -59,7 +59,7 @@ export const Pagination = ({
         side={EArrowLinkSides.Left}
         active={current > 1}
       />
-      {paginationLinks.map(link => (
+      {paginationLinks.map((link) => (
         <InternalLinkStyled key={link.path} active={link.active} to={link.path}>
           {link.number}
         </InternalLinkStyled>

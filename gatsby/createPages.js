@@ -20,6 +20,7 @@ const createPages = async ({ graphql, actions }) => {
     query {
       posts: allMarkdownRemark(
         filter: { frontmatter: { publish: { eq: true } } }
+        sort: {fields: [fields___novel___title, fields___novel___chapter], order: [ASC, ASC]}
       ) {
         nodes {
           fields {
@@ -60,8 +61,8 @@ const createPages = async ({ graphql, actions }) => {
   let postTags = [];
 
   allPosts.forEach(({ path, tags, novel: { title, chapter }, id }, index) => {
-    const previous = index === allPosts.length - 1 ? null : allPosts[index + 1];
-    const next = index === 0 ? null : allPosts[index - 1];
+    const next = index === allPosts.length - 1 ? null : allPosts[index + 1];
+    const previous = index === 0 ? null : allPosts[index - 1];
     postTags = [...postTags, ...tags];
     if (chapter === 1) {
       postNovels = [...postNovels, title];
@@ -70,7 +71,7 @@ const createPages = async ({ graphql, actions }) => {
       path,
       component: join(templatesPath, "Chapter.tsx"),
       context: {
-        post: allPosts[index],
+        novel: allPosts[index].novel,
         id,
         previous: previous
           ? {
@@ -124,7 +125,7 @@ const createPages = async ({ graphql, actions }) => {
       novelTags.add(...chapter.tags)
     });
 
-    console.log(novelTags);
+    const tags = Array.from(novelTags);
 
     createPagedPageCallback({
       callback: createPage,
@@ -134,6 +135,7 @@ const createPages = async ({ graphql, actions }) => {
       component: join(templatesPath, "Novel.tsx"),
       context: {
         title: name,
+        tags: allTags.filter(tag => tags.includes(tag.name)),
         chapters: chapters.map(({title, path}) => ({title, path}))
       },
     });

@@ -25,6 +25,7 @@ const ContainerStyled = styled.div`
 const TitleStyled = styled(TextSize)`
   text-align: center;
   display: block;
+  margin-bottom: 20px;
 `;
 
 const CategoriesContainer = styled.div`
@@ -85,7 +86,7 @@ export const NovelsPage = ({ pageContext }: INovelsPageProps) => {
   return (
     <Layout title={pageContext?.tag || "Pen"}>
       <TitleStyled size={ETextSizes.Medium}>
-        Welcome to my pen joutnal
+        Welcome to my pen journal
       </TitleStyled>
       <CategoriesContainer>
         <CategoriesTextStyled size={ETextSizes.Regular}>

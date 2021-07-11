@@ -17,12 +17,12 @@ export const Layout = ({
   children,
   title,
   description,
-  pageUrl
+  pageUrl,
 }: ILayoutProps) => (
   <>
     <SEO title={title} description={description} pageUrl={pageUrl} />
     <Head />
-    <Header />
+    <Header title={title} />
     <main>{children}</main>
     <Footer />
   </>

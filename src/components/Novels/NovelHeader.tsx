@@ -8,7 +8,7 @@ import {
   RedditIcon,
   RedditShareButton,
   TwitterIcon,
-  TwitterShareButton
+  TwitterShareButton,
 } from "react-share";
 import styled, { css, useTheme } from "styled-components";
 
@@ -28,7 +28,6 @@ interface IPageQuery {
 }
 
 interface IHeaderProps extends IStyledProps {
-  tags: TTagLink[];
   title: string;
   readingTime: string;
   pageUrl: string;
@@ -49,7 +48,6 @@ const PostLinkFooterStyled = styled.div`
     flex-direction: row;
   }
 `;
-
 
 const SocialIcons = styled.div`
   display: flex;
@@ -113,9 +111,7 @@ export const NovelHeader = ({
     <BottomLineContainer className={className}>
       <HeadingStyled size={EHeadingSizes.Large}>{title}</HeadingStyled>
       <PostLinkFooterStyled>
-        <DateTimeStyled size={ETextSizes.Tiny}>
-          {readingTime}
-        </DateTimeStyled>
+        <DateTimeStyled size={ETextSizes.Tiny}>{readingTime}</DateTimeStyled>
         <SocialIcons>
           <FacebookShareButtonStyled
             resetButtonStyle={false}
