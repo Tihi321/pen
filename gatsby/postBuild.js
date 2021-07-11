@@ -3,30 +3,31 @@ const fs = require("fs");
 const onPostBuild = async ({ graphql }) => {
   await graphql(`
     {
-      posts: allMarkdownRemark {
-        edges {
-          node {
-            fields {
-              novel {
-                title
-                chapter
-              }
-            }
-            frontmatter {
+      posts: allMarkdownRemark(
+        filter: { frontmatter: { publish: { eq: true } } }
+        sort: {fields: [fields___novel___title, fields___novel___chapter], order: [ASC, ASC]}
+      ) {
+        nodes {
+          fields {
+            path
+            novel {
               title
-              tags
+              chapter
             }
-            html
-            id
           }
+          frontmatter {
+            title
+            tags
+          }
+          id
         }
       }
     }
   `).then((result) => {
     const restPath = "./public/rest";
-    const restNovelPath = "./public/rest/novel";
+    const restNovelPath = "./public/rest/pen";
 
-    const posts = result.data.posts.edges.map(({ node }) => node);
+    const posts = result.data.posts.nodes;
 
     if (!fs.existsSync(restPath)) {
       fs.mkdirSync(restPath);
@@ -38,7 +39,7 @@ const onPostBuild = async ({ graphql }) => {
 
     const postsData = posts.map(data => ({id: data.id, title: data.frontmatter.title, tags: data.frontmatter.tags, novel: data.fields.novel.title}));
 
-    fs.writeFileSync(`${restPath}/novels.json`, JSON.stringify(postsData));
+    fs.writeFileSync(`${restPath}/pens.json`, JSON.stringify(postsData));
 
     posts.map((post) => {
       const data = {

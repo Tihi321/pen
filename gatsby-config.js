@@ -22,14 +22,6 @@ const plugins = [
   {
     resolve: "gatsby-source-filesystem",
     options: {
-      name: "assets",
-      path: `${__dirname}/content/assets/`,
-    },
-    __key: "assets",
-  },
-  {
-    resolve: "gatsby-source-filesystem",
-    options: {
       name: "novels",
       path: `${__dirname}/content/novels/`,
     },
@@ -40,7 +32,6 @@ const plugins = [
     options: {
       src: join(__dirname, "src"),
       images: join(__dirname, "content/images"),
-      assets: join(__dirname, "content/assets"),
     },
   },
   "gatsby-plugin-styled-components",
@@ -113,7 +104,6 @@ const plugins = [
         "~ts/utils": "src/utils",
         "~ts/novels": "content/novels",
         "~ts/images": "content/images",
-        "~ts/assets": "content/assets",
         "~ts/gatsby": "gatsby",
       },
     },

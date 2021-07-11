@@ -29,7 +29,6 @@
           ["~ts/utils", "./src/utils"],
           ["~ts/posts", "./content/posts"],
           ["~ts/images", "./content/images"],
-          ["~ts/assets", "./content/assets"],
           ["~ts/data", "./content/data"],
           ["~ts/gatsby", "./gatsby"]
         ],

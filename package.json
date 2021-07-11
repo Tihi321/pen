@@ -47,7 +47,7 @@
     "styled-components": "^5.2.1",
     "styled-normalize": "^8.0.7",
     "ts-use": "^1.1.5",
-    "tsl-utils": "^1.0.2"
+    "tsl-utils": "^1.0.6"
   },
   "devDependencies": {
     "@babel/core": "^7.13.13",

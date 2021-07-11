@@ -17,8 +17,6 @@
       "~ts/novels": ["content/novels"],
       "~ts/images": ["content/images"],
       "~ts/images/*": ["content/images/*"],
-      "~ts/assets": ["content/assets"],
-      "~ts/assets/*": ["content/assets/*"],
       "~ts/gatsby": ["content/gatsby"],
       "~ts/gatsby/*": ["content/gatsby/*"]
     },
