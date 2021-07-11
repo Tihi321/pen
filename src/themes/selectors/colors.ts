@@ -21,6 +21,11 @@ export const tertiaryColor = createSelector(
   colors => colors.tertiary
 );
 
+export const tertiaryTransparentColor = createSelector(
+  themeColors,
+  colors => colors.tertiaryTransparent
+);
+
 export const tertiarySemiTransparenColor = createSelector(
   themeColors,
   colors => colors.tertiarySemiTransparent
@@ -54,5 +59,6 @@ export const modalBackgroundColor = tertiarySemiTransparenColor;
 export const markColor = focusColor;
 export const markBackgroundColor = secondaryColor;
 export const selectBackgroundColor = primaryColor;
+export const selectHoverBackgroundColor = tertiaryTransparentColor;
 export const selectedBackgroundColor = secondaryColor;
 export const selectTextColor = focusColor;

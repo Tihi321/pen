@@ -46,6 +46,7 @@ export const coreStyles = css`
     padding: 20px;
     min-height: 100vh;
     display: flex;
+    font-family: "Raleway";
 
     ${media(EBreakpoints.LAPTOP, ESide.UP)} {
       padding: 55px 30px;
@@ -69,6 +70,7 @@ export const headingStyles = css`
   h5,
   h6 {
     margin: 0;
+    font-family: "Playfair Display";
   }
 
   h1 {

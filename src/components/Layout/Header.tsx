@@ -3,12 +3,18 @@ import styled from "styled-components";
 
 import { FeaturedButton } from "~ts/components/Buttons";
 import { InternalLink } from "~ts/components/Links";
-import { EBreakpoints, EInternalLinks, ETextSizes } from "~ts/enums";
+import { EBreakpoints, EHeadingSizes, EInternalLinks } from "~ts/enums";
 import { useMediaQuery, useSwitchTheme } from "~ts/hooks";
 import Logo from "~ts/images/logo.inline.svg";
 import { getTheme, useSelector } from "~ts/store";
 import { logoBackgroundColor, logoForegroundColor } from "~ts/themes";
 import { media } from "~ts/utils";
+import { Heading } from "../Common";
+
+const TitleStyled = styled(Heading)`
+  text-transform: uppercase;
+  align-self: center;
+`;
 
 const LogoStyled = styled(Logo)`
   width: 126px;
@@ -50,12 +56,12 @@ export const Header = () => {
       </InternalLink>
       {isTablet && (
         <>
-        <div>{"Pen"}</div>
-        <HeaderLinksGroupStyled>
-          <ThemeButtonStyled onClick={() => switchTheme()}>
-            {theme}
-          </ThemeButtonStyled>
-        </HeaderLinksGroupStyled>
+          <TitleStyled size={EHeadingSizes.Medium}>{"Pen"}</TitleStyled>
+          <HeaderLinksGroupStyled>
+            <ThemeButtonStyled onClick={() => switchTheme()}>
+              {theme}
+            </ThemeButtonStyled>
+          </HeaderLinksGroupStyled>
         </>
       )}
     </HeaderStyled>
