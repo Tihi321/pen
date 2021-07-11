@@ -70,7 +70,7 @@ export const headingStyles = css`
   h5,
   h6 {
     margin: 0;
-    font-family: "Playfair Display";
+    font-family: "Roboto Slab";
   }
 
   h1 {

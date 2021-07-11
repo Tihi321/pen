@@ -1,5 +1,5 @@
 const TAG_ADDRESS = "category";
-const NOVEL_ADDRESS = "novel";
+const NOVEL_ADDRESS = "pen";
 
 module.exports = {
   TAG_ADDRESS,

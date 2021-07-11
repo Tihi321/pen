@@ -44,7 +44,11 @@ const ThemeButtonStyled = styled(FeaturedButton)`
   text-transform: capitalize;
 `;
 
-export const Header = () => {
+interface IHeaderProps {
+  title?: string;
+}
+
+export const Header = ({ title }: IHeaderProps) => {
   const theme = useSelector(getTheme);
   const { switchTheme } = useSwitchTheme();
   const isTablet = useMediaQuery(EBreakpoints.TABLET);
@@ -56,7 +60,9 @@ export const Header = () => {
       </InternalLink>
       {isTablet && (
         <>
-          <TitleStyled size={EHeadingSizes.Medium}>{"Pen"}</TitleStyled>
+          <TitleStyled size={EHeadingSizes.Medium}>
+            {title || "Pen"}
+          </TitleStyled>
           <HeaderLinksGroupStyled>
             <ThemeButtonStyled onClick={() => switchTheme()}>
               {theme}

@@ -3,16 +3,16 @@ import styled from "styled-components";
 import { TextSize } from "~ts/components/Common";
 
 import { Layout } from "~ts/components/Layout";
+import { InternalLink } from "~ts/components/Links";
 import { NovelLink } from "~ts/components/Novels/NovelLink";
 import { Pagination } from "~ts/components/Novels/Pagination";
 import { EBreakpoints, ELinkSizes, ESide, ETextSizes } from "~ts/enums";
-import { IPagination, TPostLink } from "~ts/typings";
+import { IPagination, TPostLink, TTagLink } from "~ts/typings";
 import { media } from "~ts/utils";
 
-const TitleStyled = styled(TextSize)`
-  text-align: center;
-  display: block;
-  text-transform: capitalize;
+const CategoriesStyled = styled.div`
+  display: flex;
+  justify-content: flex-start;
 `;
 
 const ChaptersStyled = styled(TextSize)`
@@ -35,6 +35,7 @@ const PaginationStyled = styled(Pagination)`
 
 interface IContextProps extends IPagination {
   title: string;
+  tags: TTagLink[];
   chapters: TPostLink[];
 }
 
@@ -43,12 +44,20 @@ interface INovelPageProps {
 }
 
 export const NovelPage = ({ pageContext }: INovelPageProps) => {
-  console.log();
+  console.log(pageContext);
   return (
     <Layout title={pageContext.title}>
       <ContainerStyled>
-        <TitleStyled size={ETextSizes.Medium}>{pageContext.title}</TitleStyled>
-        <ChaptersStyled size={ETextSizes.Regular}>Chapters</ChaptersStyled>
+        <ChaptersStyled size={ETextSizes.Regular}>
+          Chapters
+          <CategoriesStyled>
+            {pageContext.tags.map((tag) => (
+              <InternalLink size={ETextSizes.Tiny} to={tag.path}>
+                {tag.name}
+              </InternalLink>
+            ))}
+          </CategoriesStyled>
+        </ChaptersStyled>
         {pageContext.chapters.map((chapter) => (
           <NovelLink
             key={chapter.title}
