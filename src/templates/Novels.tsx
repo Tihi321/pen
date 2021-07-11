@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { Select, TOption } from "~ts/components/Inputs";
 
 import { Layout } from "~ts/components/Layout";
 import { NovelLink } from "~ts/components/Novels/NovelLink";
@@ -29,20 +30,32 @@ interface IContextProps extends IPagination {
 }
 
 interface INovelsPageProps {
-  pageContext: IContextProps
+  pageContext: IContextProps;
 }
 
 export const NovelsPage = ({ pageContext }: INovelsPageProps) => {
-  console.log("pageContext", pageContext);
+  const [selected, setSelected] = useState({} as TOption);
+  const selectItems: TOption[] = pageContext.tags.map((tag) => ({
+    value: tag.path,
+    name: tag.name,
+  }));
+
+  const selectItem = selected
+    ? pageContext.tags
+        .filter((tagItem) => tagItem.name === selected.name)
+        .map((item) => ({ value: item.path, name: item.name }))[0]
+    : undefined;
   return (
     <Layout title={pageContext?.tag || "Pen"}>
-      {!pageContext.tag && "Welcome to Pen, general writting blog"}
-      <select name="cars" id="cars" onChange={event => { console.log(event.currentTarget.value)}}>
-        <option value="all">All</option>
-        {pageContext.tags.map(tag => <option value={tag.name}>{tag.name}</option>)}
-      </select>
+      <Select
+        items={selectItems}
+        selected={selectItem}
+        onChange={(option) => {
+          setSelected(option);
+        }}
+      />
       <ContainerStyled>
-        {pageContext.novels.map(novel => (
+        {pageContext.novels.map((novel) => (
           <NovelLink
             key={novel.name}
             to={novel.path}
@@ -55,6 +68,5 @@ export const NovelsPage = ({ pageContext }: INovelsPageProps) => {
     </Layout>
   );
 };
-
 
 export default NovelsPage;
