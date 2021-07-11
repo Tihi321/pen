@@ -41,8 +41,8 @@ export const listResponsiveFontStyles = (breakpoint: EBreakpoints) =>
 export const blockquoteResponsiveFontStyles = (breakpoint: EBreakpoints) =>
   responsiveFontStyles(EFonts.Blockquote, breakpoint);
 
-export const tagsResponsiveFontStyles = (breakpoint: EBreakpoints) =>
-  responsiveFontStyles(EFonts.Tags, breakpoint);
+export const tinyResponsiveFontStyles = (breakpoint: EBreakpoints) =>
+  responsiveFontStyles(EFonts.Tiny, breakpoint);
 
 export const hugeFontThemeResponsiveFontStyles = heading01ResponsiveFontStyles;
 
@@ -54,4 +54,4 @@ export const regularFontThemeResponsiveFontStyles = heading04ResponsiveFontStyle
 
 export const smallFontThemeResponsiveFontStyles = bodyResponsiveFontStyles;
 
-export const tinyFontThemeResponsiveFontStyles = tagsResponsiveFontStyles;
+export const tinyFontThemeResponsiveFontStyles = tinyResponsiveFontStyles;

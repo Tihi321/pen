@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { FeaturedButton } from "~ts/components/Buttons";
 import { TextSize } from "~ts/components/Common";
-import { InternalLink, Link } from "~ts/components/Links";
+import { Link } from "~ts/components/Links";
 import {
   CONTACT,
   EBreakpoints,
@@ -12,7 +12,7 @@ import {
   EInternalLinks,
   ESide,
   ETextSizes,
-  EZIndex
+  EZIndex,
 } from "~ts/enums";
 import { useMediaQuery, useSwitchTheme } from "~ts/hooks";
 import { getTheme, useSelector } from "~ts/store";

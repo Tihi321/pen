@@ -1,5 +1,5 @@
 export enum EZIndex {
-  PROJECT_LIST = 5,
+  SELECT_LIST = 5,
   FOOTER_THEME_BUTTON = 10
 }
 export enum EBreakpoints {

@@ -8,6 +8,7 @@ export const lightTheme = {
     secondary: "rgba(23, 173, 232, 1)",
     tertiary: "rgba(102, 102, 102, 1)",
     fontColor: "rgba(51, 51, 51, 1)",
+    tertiaryTransparent: "rgba(102, 102, 102, 0.5)",
     tertiarySemiTransparent: "rgba(102, 102, 102, 0.1)"
   },
   sharedColors,

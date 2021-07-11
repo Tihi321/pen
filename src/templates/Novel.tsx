@@ -1,12 +1,23 @@
 import React from "react";
 import styled from "styled-components";
+import { TextSize } from "~ts/components/Common";
 
 import { Layout } from "~ts/components/Layout";
 import { NovelLink } from "~ts/components/Novels/NovelLink";
 import { Pagination } from "~ts/components/Novels/Pagination";
-import { EBreakpoints, ELinkSizes, ESide } from "~ts/enums";
+import { EBreakpoints, ELinkSizes, ESide, ETextSizes } from "~ts/enums";
 import { IPagination, TPostLink } from "~ts/typings";
 import { media } from "~ts/utils";
+
+const TitleStyled = styled(TextSize)`
+  text-align: center;
+  display: block;
+  text-transform: capitalize;
+`;
+
+const ChaptersStyled = styled(TextSize)`
+  margin: 15px 0;
+`;
 
 const ContainerStyled = styled.div`
   display: flex;
@@ -28,14 +39,17 @@ interface IContextProps extends IPagination {
 }
 
 interface INovelPageProps {
-  pageContext: IContextProps
+  pageContext: IContextProps;
 }
 
 export const NovelPage = ({ pageContext }: INovelPageProps) => {
+  console.log();
   return (
     <Layout title={pageContext.title}>
       <ContainerStyled>
-        {pageContext.chapters.map(chapter => (
+        <TitleStyled size={ETextSizes.Medium}>{pageContext.title}</TitleStyled>
+        <ChaptersStyled size={ETextSizes.Regular}>Chapters</ChaptersStyled>
+        {pageContext.chapters.map((chapter) => (
           <NovelLink
             key={chapter.title}
             to={chapter.path}
@@ -48,6 +62,5 @@ export const NovelPage = ({ pageContext }: INovelPageProps) => {
     </Layout>
   );
 };
-
 
 export default NovelPage;

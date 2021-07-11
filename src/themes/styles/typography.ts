@@ -10,14 +10,13 @@ export enum EFonts {
   Blockquote = "blockquote",
   List = "list",
   FeaturedButton = "featuredButton",
-  Tags = "tags"
+  Tiny = "tiny"
 }
 
 export const fonts = {
   [EFonts.Body]: {
     [EBreakpoints.MOBILE]: {
       fontSize: "16px",
-      fontFamily: "Raleway",
       fontWeight: "400",
       lineHeight: "1.4"
     },
@@ -36,7 +35,6 @@ export const fonts = {
   },
   [EFonts.Heading01]: {
     [EBreakpoints.MOBILE]: {
-      fontFamily: "Playfair Display",
       fontSize: "26px",
       fontWeight: "700",
       lineHeight: "1.1"
@@ -48,7 +46,6 @@ export const fonts = {
   },
   [EFonts.FeaturedHeading]: {
     [EBreakpoints.MOBILE]: {
-      fontFamily: "Playfair Display",
       fontSize: "70px",
       fontWeight: "700",
       lineHeight: "1.1"
@@ -60,7 +57,6 @@ export const fonts = {
   },
   [EFonts.Heading02]: {
     [EBreakpoints.MOBILE]: {
-      fontFamily: "Playfair Display",
       fontSize: "22px",
       fontWeight: "700",
       lineHeight: "1.2"
@@ -72,7 +68,6 @@ export const fonts = {
   },
   [EFonts.Heading03]: {
     [EBreakpoints.MOBILE]: {
-      fontFamily: "Playfair Display",
       fontSize: "18px",
       fontWeight: "700",
       lineHeight: "1.2"
@@ -84,7 +79,6 @@ export const fonts = {
   },
   [EFonts.Heading04]: {
     [EBreakpoints.MOBILE]: {
-      fontFamily: "Playfair Display",
       fontSize: "16px",
       fontWeight: "700",
       lineHeight: "1.2"
@@ -116,7 +110,7 @@ export const fonts = {
       lineHeight: "1.2"
     }
   },
-  [EFonts.Tags]: {
+  [EFonts.Tiny]: {
     [EBreakpoints.MOBILE]: {
       fontSize: "10px",
       lineHeight: "1.4"

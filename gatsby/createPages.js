@@ -117,7 +117,14 @@ const createPages = async ({ graphql, actions }) => {
   });
 
   novels.forEach(({ name, path}) => {
+    let novelTags = new Set();
     const chapters = allPosts.filter(({ novel: {title} }) => title === name);
+
+    chapters.forEach(chapter => {
+      novelTags.add(...chapter.tags)
+    });
+
+    console.log(novelTags);
 
     createPagedPageCallback({
       callback: createPage,
